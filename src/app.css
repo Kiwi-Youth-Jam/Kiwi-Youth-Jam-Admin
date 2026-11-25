@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://use.typekit.net/iec7xbv.css');
+
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #31572C;
+    --color-secondary: #132A13;
+    --color-primary-dark: #31572C;
+    --color-secondary-dark: #132A13;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #202020;
+    --color-text-primary-dark: #FFFFFF;
+    --color-text-secondary-dark: #FFFFFF;
+    --color-text-hovered: #BBBBBB;
+    --color-text-hovered-dark: #BBBBBB;
+    --color-hovered: #132A13;
+    --color-hovered-dark: #132A13;
+    --color-dark: #132A13;
+    --color-light: rgb(235, 235, 235);
+    --color-nav: #31572C;
+    --color-nav-dark: #31572C;
+    --color-nav-secondary: #31572C;
+    --color-nav-secondary-dark: #31572C;
+
+    --font-display: "Archivo Black", sans-serif;
+    --font-logo: "bubblegum-pop-vanilla", sans-serif;
+}
