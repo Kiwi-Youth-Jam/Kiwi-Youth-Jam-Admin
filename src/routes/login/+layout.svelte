@@ -1,0 +1,119 @@
+<script lang="ts">
+	import favicon from '#lib/assets/favicon.svg';
+	import DropdownMenu from '#lib/components/DropdownMenu.svelte';
+	import DropdownMenuItem from '#lib/components/DropdownMenuItem.svelte';
+	import DropdownMenuMobile from '#lib/components/DropdownMenuMobile.svelte';
+
+	import '../../app.css';
+
+	let { children } = $props();
+
+	let menuOpen = $state(false);
+
+	class NavbarLinkCtx {
+		text?: string;
+		href?: string;
+	}
+
+	class NavbarDropdownCtx {
+		text?: string;
+		navbarChildren?: NavbarLink[];
+	}
+
+	class NavbarLink {
+		text?: string;
+		href?: string;
+
+		constructor(ctx: NavbarLinkCtx={}) {
+			this.text = ctx.text;
+			this.href = ctx.href;
+		}
+	}
+
+	class NavbarDropdown {
+		text?: string;
+		navbarChildren?: NavbarLink[];
+
+		constructor(ctx: NavbarDropdownCtx={}) {
+			this.text = ctx.text;
+			this.navbarChildren = ctx.navbarChildren;
+		}
+	}
+
+	const navBar: any[] = [
+
+	];
+</script>
+
+<style>
+    @reference "../../app.css";
+
+    :global(body) {
+        @apply bg-light dark:bg-dark;
+    }
+
+	:global(html) {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<svelte:head>
+	<title>Kiwi Youth Jam</title>
+	<link rel="icon" href={favicon} />
+</svelte:head>
+
+<header class="fixed top-0 left-0 right-0 z-50 py-3 px-3">
+	<div class="py-2 text-center bg-(--color-nav) dark:bg-(--color-nav-dark) text-(--color-text-primary) rounded-xl flex justify-evenly items-center backdrop-blur-xl md:px-10 relative z-10">
+		<a href="/" class="font-logo text-3xl md:text-4xl hover:text-(--color-text-hover-dark) hover:dark:text-(--color-text-hover-dark)">KIWI YOUTH JAM admin</a>
+
+		<nav class="hidden md:flex flex-row gap-6 text-l font-display">
+			{#each navBar as navItem}
+				{#if navItem instanceof NavbarLink}
+					<a href={navItem.href} class="hover:text-(--color-text-hovered) select-none hover:dark:text-(--color-text-hovered-dark) transition">{navItem.text}</a>
+				{/if}
+
+				{#if navItem instanceof NavbarDropdown}
+					<DropdownMenu>
+						<span class="hover:text-(--color-text-hovered) select-none hover:dark:text-(--color-text-hovered-dark) transition">{navItem.text}</span>
+
+						<div class='content bg-(--color-nav-secondary) dark:bg-(--color-nav-secondary-dark) text-left shadow-2xl px-3 pb-3 rounded-b-xl flex-col gap-3 min-w-max'>
+							{#each navItem.navbarChildren as dropdownItem}
+								<DropdownMenuItem text={dropdownItem.text} href={dropdownItem.href} />
+							{/each}
+						</div>
+					</DropdownMenu>
+				{/if}
+			{/each}
+		</nav>
+
+        <button class="md:hidden font-display text-2xl p-2 hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark) transition" onclick={() => menuOpen = !menuOpen} aria-label="Toggle navigation menu" aria-expanded={menuOpen}>{menuOpen ? '✕' : '☰'}</button>
+	</div>
+
+	{#if menuOpen}
+		<div class="md:hidden mt-2 bg-(--color-nav) dark:bg-(--color-nav-dark) backdrop-blur-xl rounded-xl p-4 text-light font-display text-md relative z-10">
+			<nav class="flex flex-col">
+				{#each navBar as navItem}
+					{#if navItem instanceof NavbarLink}
+						<a href={navItem.href} class="hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark) py-3 px-3 transition" onclick={() => menuOpen = false}>{navItem.text}</a>
+					{/if}
+
+					{#if navItem instanceof NavbarDropdown}
+						<DropdownMenuMobile>
+							<span class="hover:text-(--color-text-hovered) select-none hover:dark:text-(--color-text-hovered-dark) transition">{navItem.text}</span>
+
+							<div class='content bg-(--color-nav-secondary) dark:bg-(--color-nav-secondary-dark) text-left shadow-2xl px-3 pb-3 rounded-b-xl flex-col gap-3 min-w-max'>
+								{#each navItem.navbarChildren as dropdownItem}
+									<DropdownMenuItem text={dropdownItem.text} href={dropdownItem.href} />
+								{/each}
+							</div>
+						</DropdownMenuMobile>
+					{/if}
+				{/each}
+			</nav>
+		</div>
+	{/if}
+</header>
+
+<div class="h-24"></div>
+
+{@render children()}

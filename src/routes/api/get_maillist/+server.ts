@@ -1,7 +1,5 @@
-export async function GET({ request }) {
-    let maillist: string[] = [
-        'drew@drewfitzgerald.co.nz'
-    ];
+import { db } from '#lib/database/database.ts';
 
-	return Response.json(maillist);
+export async function GET({ request }) {
+	return Response.json(await db.getMaillist());
 }

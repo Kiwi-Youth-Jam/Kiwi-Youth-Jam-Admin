@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { NEWSLETTER_URL } from '$app/env/public';
+    import { NEWSLETTER_URL, NEWSLETTER_EDIT_URL } from '$app/env/public';
     import { onMount } from 'svelte';
 
     let mailList: string[] = $state([]);
@@ -29,11 +29,15 @@
         <iframe class="border border-gray-300 rounded-lg" title="Newsletter html" src={NEWSLETTER_URL}></iframe>
 
         <div>
-            <a href={`${NEWSLETTER_URL}?edit`} target="_blank" rel="noopener noreferrer" class="text-xl bg-primary dark:bg-(--color-primary-dark) shadow-xl rounded-xl font-display md:text-2xl transition p-2 hover:cursor-pointer hover:bg-(--color-hovered) text-(--color-text-primary) hover:dark:bg-(--color-hovered-dark) hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark)">Edit</a>
+            <a href={NEWSLETTER_EDIT_URL} target="_blank" rel="noopener noreferrer" class="text-xl bg-primary dark:bg-(--color-primary-dark) shadow-xl rounded-xl font-display md:text-2xl transition p-2 hover:cursor-pointer hover:bg-(--color-hovered) text-(--color-text-primary) hover:dark:bg-(--color-hovered-dark) hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark)">Edit</a>
         </div> <!-- For this to work add [global]\n cookie-lax to copyparty config-->
     </section>
 
-    <section class="bg-primary dark:bg-(--color-primary:dark) rounded-xl md:min-w-[20vw] md:max-w-[20vw] mr-3">
-        
+    <section class="bg-primary dark:bg-(--color-primary:dark) rounded-xl md:min-w-[20vw] md:max-w-[20vw] mr-3 p-6">
+        <form action='/api/send_newsletter' method="POST">
+            <input type="text" name="to" placeholder="to" />
+            <input type="text" name="subject" placeholder="subject" />
+            <input type="submit" class="text-xl bg-secondary dark:bg-(--color-secondary-dark) shadow-xl rounded-xl font-display md:text-2xl transition p-2 hover:cursor-pointer hover:bg-(--color-hovered) text-(--color-text-primary) hover:dark:bg-(--color-hovered-dark) hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark)" value="Send" />
+        </form>
     </section>
 </div>

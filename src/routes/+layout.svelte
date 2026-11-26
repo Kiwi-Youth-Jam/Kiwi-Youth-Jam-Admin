@@ -42,6 +42,7 @@
 
 	const navBar = [
 		new NavbarLink({text: 'Newsletter', href: '/newsletter'}),
+		new NavbarLink({text: 'Sign out', href: '/signout'}),
 	];
 </script>
 
