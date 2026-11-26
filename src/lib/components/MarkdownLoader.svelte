@@ -3,7 +3,7 @@
     import Header from '#lib/components/Header.svelte';
     import Markdown from '#lib/components/Markdown.svelte';
 
-    const { href, header, edit } = $props();
+    const { href, header } = $props();
 
     let md = $state('');
 
@@ -18,6 +18,6 @@
     <Markdown md={md} />
 
     <div class="flex justify-center">
-        <a href={edit} target="_blank" rel="noopener noreferrer" class="text-xl bg-primary dark:bg-(--color-primary-dark) shadow-xl rounded-xl font-display md:text-2xl transition p-2 hover:cursor-pointer hover:bg-(--color-hovered) text-(--color-text-primary) hover:dark:bg-(--color-hovered-dark) hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark)">Edit</a>
+        <a href={`${href}?edit2`} target="_blank" rel="noopener noreferrer" class="text-xl bg-primary dark:bg-(--color-primary-dark) shadow-xl rounded-xl font-display md:text-2xl transition p-2 hover:cursor-pointer hover:bg-(--color-hovered) text-(--color-text-primary) hover:dark:bg-(--color-hovered-dark) hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark)">Edit</a>
     </div>
 </div>

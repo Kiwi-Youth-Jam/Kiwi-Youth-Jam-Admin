@@ -4,7 +4,7 @@
     import GridCard from '#lib/components/GridCard.svelte';
     import Header from '#lib/components/Header.svelte';
 
-    import { CDN_URL, TEAM_PAGE_EDIT_URL } from '$app/env/public';
+    import { CDN_URL } from '$app/env/public';
 
     let sponsors: {name: string, image: string}[] = $state([]);
 
@@ -23,5 +23,5 @@
 		{/each}
 	</Grid>
 
-    <a href={TEAM_PAGE_EDIT_URL} target="_blank" rel="noopener noreferrer" class="text-xl bg-primary dark:bg-(--color-primary-dark) shadow-xl rounded-xl font-display md:text-2xl transition p-2 hover:cursor-pointer hover:bg-(--color-hovered) text-(--color-text-primary) hover:dark:bg-(--color-hovered-dark) hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark)">Edit</a>
+    <a href={`${CDN_URL}/pages/team.json?edit`} target="_blank" rel="noopener noreferrer" class="text-xl bg-primary dark:bg-(--color-primary-dark) shadow-xl rounded-xl font-display md:text-2xl transition p-2 hover:cursor-pointer hover:bg-(--color-hovered) text-(--color-text-primary) hover:dark:bg-(--color-hovered-dark) hover:text-(--color-text-hovered) hover:dark:text-(--color-text-hovered-dark)">Edit</a>
 </section>
