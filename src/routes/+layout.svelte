@@ -45,7 +45,7 @@
 			new NavbarLink({text: 'About page', href: '/about'}),
 			new NavbarLink({text: 'Contact page', href: '/contact'}),
 			new NavbarLink({text: 'Sponsors page', href: '/sponsors'}),
-			new NavbarLink({text: 'Team page', href: '/about'}),
+			new NavbarLink({text: 'Team page', href: '/team'}),
 		]}),
 
 		new NavbarLink({text: 'Newsletter', href: '/newsletter'}),
