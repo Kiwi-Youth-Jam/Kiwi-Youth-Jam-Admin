@@ -10,6 +10,8 @@
     });
 </script>
 
+<h2 class="font-bold text-4xl text-center text-(--color-text-secondary) dark:text-(--color-text-secondary-dark) mb-4 ml-4">Newsletter</h2>
+
 <div class="flex flex-col md:flex-row justify-between">
     <section class="flex flex-col gap-2 bg-primary dark:bg-(--color-primary:dark) rounded-xl p-4 ml-3 max-h-[40svh] md:max-h-[80svh] overflow-y-auto">
         <div class="flex flex-row items-center gap-4 md:min-w-[20vw] md:max-w-[20vw]">

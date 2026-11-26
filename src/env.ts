@@ -15,5 +15,11 @@ export const variables = defineEnvVars({
     MYSQL_USER: {},
     MYSQL_PASSWORD: {},
     MYSQL_DB: {},
-    MYSQL_PORT: {}
+    MYSQL_PORT: {},
+    ADMIN_EMAIL: {},
+    ADMIN_PASSWORD: {},
+    ABOUT_PAGE_EDIT_URL: { public: true },
+    CONTACT_PAGE_EDIT_URL: { public: true },
+    SPONSORS_PAGE_EDIT_URL: { public: true },
+    TEAM_PAGE_EDIT_URL: { public: true }
 });

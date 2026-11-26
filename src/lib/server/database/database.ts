@@ -3,13 +3,19 @@ import { Session } from '#lib/server/sessionManager.ts';
 import type { RowDataPacket } from 'mysql2';
 import { BcryptManager } from './hash';
 
+import { ADMIN_EMAIL, ADMIN_PASSWORD } from '$app/env/private';
+
 class DatabaseManager {
     hasher: BcryptManager;
 
     constructor () {
-        initDB();
-
         this.hasher = new BcryptManager();
+    }
+
+    async connect() {
+        await initDB();
+
+        await this.addUser('Kiwi Youth Jam', 'Admin', ADMIN_EMAIL, ADMIN_PASSWORD);
     }
 
     async getMaillist() {
@@ -22,13 +28,13 @@ class DatabaseManager {
         return rows[0];
     }
 
-    async addUser(email: string, password: string) {
+    async addUser(firstname: string, lastname: string, email: string, password: string) {
         const [rows] = await connection.query<RowDataPacket[]>('SELECT email FROM users WHERE email=?', [email]);
 
         if (rows.length > 0)
             return false;
 
-        await connection.execute('INSERT INTO users (email, passwd) VALUES (?, ?)', [email, await this.hasher.hash(password)]);
+        await connection.execute('INSERT INTO users (email, passwd, firstname, lastname) VALUES (?, ?, ?, ?)', [email, await this.hasher.hash(password), firstname, lastname]);
         return true;
     }
 

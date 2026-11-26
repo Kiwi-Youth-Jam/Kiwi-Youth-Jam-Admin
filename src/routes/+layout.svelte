@@ -41,7 +41,15 @@
 	}
 
 	const navBar = [
+		new NavbarDropdown({text: 'Website Content', navbarChildren: [
+			new NavbarLink({text: 'About page', href: '/about'}),
+			new NavbarLink({text: 'Contact page', href: '/contact'}),
+			new NavbarLink({text: 'Sponsors page', href: '/sponsors'}),
+			new NavbarLink({text: 'Team page', href: '/about'}),
+		]}),
+
 		new NavbarLink({text: 'Newsletter', href: '/newsletter'}),
+		new NavbarLink({text: 'Manage Admins', href: '/admins'}),
 		new NavbarLink({text: 'Sign out', href: '/signout'}),
 	];
 </script>

@@ -3,7 +3,11 @@
 declare global {
 	namespace App {
 		interface Locals {
-            email: string | null
+            user: {
+				firstname: string,
+				lastname: string,
+				email: string
+			} | null
         }
 	}
 }
