@@ -1,5 +1,5 @@
-import { db } from '#lib/database/database.ts';
-import { sendEmail } from '#lib/email.js';
+import { db } from '#lib/server/database/database.ts';
+import { sendEmail } from '#lib/server/email.js';
 import { NEWSLETTER_URL } from '$app/env/public';
 
 export async function POST({ request }) {

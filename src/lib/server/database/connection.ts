@@ -10,10 +10,10 @@ export async function setDB(name: string) {
         user: MYSQL_USER,
         password: MYSQL_PASSWORD,
         database: name,
-        port: MYSQL_PORT
+        port: Number(MYSQL_PORT)
     });
 
-    await connection.execute('CREATE TABLE IF NOT EXISTS users (user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, username TEXT NOT NULL, passwd TEXT NOT NULL, email TEXT NOT NULL)');
+    await connection.execute('CREATE TABLE IF NOT EXISTS users (user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, passwd TEXT NOT NULL, email TEXT NOT NULL)');
 }
 
 export async function initDB() {
@@ -21,7 +21,7 @@ export async function initDB() {
         host: MYSQL_HOST,
         user: MYSQL_USER,
         password: MYSQL_PASSWORD,
-        port: MYSQL_PORT
+        port: Number(MYSQL_PORT)
     });
 
     await connection.execute(`CREATE DATABASE IF NOT EXISTS \`${MYSQL_DB}\``);

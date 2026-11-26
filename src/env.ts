@@ -5,6 +5,7 @@ export const variables = defineEnvVars({
     GOOGLE_DRIVE_LINK: { public: true },
     NEWSLETTER_URL: { public: true },
     NEWSLETTER_EDIT_URL: { public: true },
+    SALT_ROUNDS: { public: true },
     SMTP_HOST: {},
     SMTP_PORT: {},
     SMTP_ADDRESS: {},
