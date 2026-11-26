@@ -14,7 +14,6 @@ export async function POST({ request, cookies }) {
         return Response.redirect(new URL('/login', request.url), 303);
 
     sessionManager.addSession(session);
-    console.log(session)
 
     cookies.set('session', session.token, {
         path: '/',
@@ -23,8 +22,6 @@ export async function POST({ request, cookies }) {
         sameSite: 'lax',
         expires: new Date(session.expires)
     });
-
-    console.log('2: Cookie set successfully');
 
     redirect(303, '/');
 }
