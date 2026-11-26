@@ -10,5 +10,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if (!PUBLIC_ROUTES.has(event.route.id ?? '') && !session)
 		redirect(303, '/login');
 
+	event.locals.email = session?.user_id ?? null;
 	return resolve(event);
 };

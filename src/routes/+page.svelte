@@ -1,8 +1,16 @@
 <script lang="ts">
     import { CDN_URL, GOOGLE_DRIVE_LINK } from '$app/env/public';
+    import { onMount } from 'svelte';
+
+    let user = $state<{ username: string; email: string }>({ username: '', email: '' });
+
+    onMount(async () => {
+        const user_req = await fetch('/api/get_user');
+        const user = await user_req.json();
+    });
 </script>
 
-<h2 class="font-bold text-4xl text-(--color-text-secondary) dark:text-(--color-text-secondary-dark) mb-4 ml-4">Welcome back</h2>
+<h2 class="font-bold text-4xl text-(--color-text-secondary) dark:text-(--color-text-secondary-dark) mb-4 ml-4">Welcome back {user.username}</h2>
 
 <section id="admin-tools" class="flex flex-col gap-2 text-(--color-text-secondary) dark:text-(--color-text-secondary-dark) px-4">
     <h2 class="text-3xl font-bold">Admin tools</h2>
