@@ -29,6 +29,7 @@
 	},
 	"dependencies": {
 		"bcrypt": "^6.0.0",
+		"csv-parse": "^7.0.3",
 		"mysql2": "^3.24.6",
 		"nodemailer": "^10.6.1",
 		"rehype-stringify": "^10.0.1",

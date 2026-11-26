@@ -19,7 +19,13 @@ class DatabaseManager {
     }
 
     async getMaillist() {
-        return ['drew@drewfitzgerald.co.nz'];
+        const [rows] = await connection.query<RowDataPacket[]>("SELECT * FROM maillist");
+
+        return rows.map(row => row.email);
+    }
+
+    async addToMailist(email: string) {
+        await connection.execute("INSERT INTO maillist (email) VALUES (?)", [email]);
     }
 
     async getUser(email: string) {
