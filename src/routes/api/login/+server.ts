@@ -14,7 +14,6 @@ export async function POST({ request, cookies }) {
         return Response.redirect(new URL('/login', request.url), 303);
 
     sessionManager.addSession(session);
-
     cookies.set('session', session.token, {
         path: '/',
         httpOnly: true,
