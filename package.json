@@ -31,6 +31,8 @@
 		"bcrypt": "^6.0.0",
 		"csv-parse": "^7.0.3",
 		"mysql2": "^3.24.6",
+		"rehype-raw": "^7.0.0",
+		"rehype-sanitize": "^6.0.0",
 		"rehype-stringify": "^10.0.1",
 		"remark": "^15.0.1",
 		"remark-parse": "^11.0.0",
