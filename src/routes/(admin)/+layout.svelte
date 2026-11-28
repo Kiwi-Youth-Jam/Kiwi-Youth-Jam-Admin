@@ -4,7 +4,7 @@
 	import DropdownMenuItem from '#lib/components/DropdownMenuItem.svelte';
 	import DropdownMenuMobile from '#lib/components/DropdownMenuMobile.svelte';
 
-	import '../../app.css';
+	import { LISTMONK_URL } from '$app/env/public';
 
 	let { children } = $props();
 
@@ -40,27 +40,19 @@
 		}
 	}
 
-	const navBar: any[] = [
+	const navBar = [
+		new NavbarDropdown({text: 'Website Content', navbarChildren: [
+			new NavbarLink({text: 'About page', href: '/about'}),
+			new NavbarLink({text: 'Contact page', href: '/contact'}),
+			new NavbarLink({text: 'Sponsors page', href: '/sponsors'}),
+			new NavbarLink({text: 'Team page', href: '/team'}),
+		]}),
 
+		new NavbarLink({text: 'Newsletter', href: LISTMONK_URL}),
+		new NavbarLink({text: 'Manage Admins', href: '/admins'}),
+		new NavbarLink({text: 'Sign out', href: '/api/signout'}),
 	];
 </script>
-
-<style>
-    @reference "../../app.css";
-
-    :global(body) {
-        @apply bg-light dark:bg-dark;
-    }
-
-	:global(html) {
-        scroll-behavior: smooth;
-    }
-</style>
-
-<svelte:head>
-	<title>Kiwi Youth Jam</title>
-	<link rel="icon" href={favicon} />
-</svelte:head>
 
 <header class="fixed top-0 left-0 right-0 z-50 py-3 px-3">
 	<div class="py-2 text-center bg-(--color-nav) dark:bg-(--color-nav-dark) text-(--color-text-primary) rounded-xl flex justify-evenly items-center backdrop-blur-xl md:px-10 relative z-10">
@@ -114,6 +106,6 @@
 	{/if}
 </header>
 
-
+<div class="h-24"></div>
 
 {@render children()}

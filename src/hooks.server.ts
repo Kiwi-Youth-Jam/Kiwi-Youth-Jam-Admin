@@ -13,7 +13,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const token = event.cookies.get('session');
     const session = token ? sessionManager.getSession(token) : null;
 
-	if (!PUBLIC_ROUTES.has(event.route.id ?? '') && !session)
+	if (!PUBLIC_ROUTES.has(event.url.pathname) && !session)
 		redirect(303, '/login');
 
 	if (session) {
