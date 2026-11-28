@@ -14,7 +14,6 @@ export async function setDB(name: string) {
     });
 
     await connection.execute('CREATE TABLE IF NOT EXISTS users (user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, firstname TEXT NOT NULL, lastname TEXT NOT NULL, passwd TEXT NOT NULL, email TEXT NOT NULL)');
-    await connection.execute('CREATE TABLE IF NOT EXISTS maillist (maillist_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, email TEXT NOT NULL)');
 }
 
 export async function initDB() {

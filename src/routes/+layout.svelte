@@ -5,6 +5,7 @@
 	import DropdownMenuMobile from '#lib/components/DropdownMenuMobile.svelte';
 
 	import '../app.css';
+	import { LISTMONK_URL } from '$app/env/public';
 
 	let { children } = $props();
 
@@ -48,9 +49,9 @@
 			new NavbarLink({text: 'Team page', href: '/team'}),
 		]}),
 
-		new NavbarLink({text: 'Newsletter', href: '/newsletter'}),
+		new NavbarLink({text: 'Newsletter', href: LISTMONK_URL}),
 		new NavbarLink({text: 'Manage Admins', href: '/admins'}),
-		new NavbarLink({text: 'Sign out', href: '/signout'}),
+		new NavbarLink({text: 'Sign out', href: '/api/signout'}),
 	];
 </script>
 

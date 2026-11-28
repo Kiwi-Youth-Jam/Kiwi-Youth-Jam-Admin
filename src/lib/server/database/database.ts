@@ -18,16 +18,6 @@ class DatabaseManager {
         await this.addUser('Kiwi Youth Jam', 'Admin', ADMIN_EMAIL, ADMIN_PASSWORD);
     }
 
-    async getMaillist() {
-        const [rows] = await connection.query<RowDataPacket[]>("SELECT * FROM maillist");
-
-        return rows.map(row => row.email);
-    }
-
-    async addToMailist(email: string) {
-        await connection.execute("INSERT INTO maillist (email) VALUES (?)", [email]);
-    }
-
     async getUser(email: string) {
         const [rows] = await connection.query<RowDataPacket[]>("SELECT * FROM users WHERE email=?", [email]);
 
